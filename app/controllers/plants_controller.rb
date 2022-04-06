@@ -16,7 +16,7 @@ class PlantsController < ApplicationController
   #post /plants
   def create
     #creates new plant 
-    plant = Plant.create(params[:plant])
+    plant = Plant.create(plant_params)
     #returns the plant data 
     render json: plant, status: :created 
     #returns a status code of 201 
@@ -25,6 +25,7 @@ class PlantsController < ApplicationController
   private 
 
   def plant_params 
-    params.require(:plant).permit(:name, :image, :price)
+    params.permit(:name, :image, :price)
   end
+  
 end
